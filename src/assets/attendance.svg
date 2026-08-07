@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="800" viewBox="0 0 1200 800" role="img" aria-label="Attendance system illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#03111d" />
+      <stop offset="100%" stop-color="#061a2c" />
+    </linearGradient>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f3046" />
+      <stop offset="100%" stop-color="#113454" />
+    </linearGradient>
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="15" result="coloredBlur" />
+      <feMerge>
+        <feMergeNode in="coloredBlur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <g filter="url(#glow)">
+    <circle cx="250" cy="220" r="160" fill="#08f0fe" opacity="0.15" />
+    <circle cx="950" cy="180" r="100" fill="#00c9ff" opacity="0.12" />
+    <circle cx="840" cy="580" r="140" fill="#12b7f6" opacity="0.12" />
+  </g>
+  <rect x="150" y="180" width="900" height="340" rx="28" fill="url(#panel)" stroke="#0bc7ff" stroke-width="3" />
+  <text x="600" y="280" text-anchor="middle" font-family="Inter, sans-serif" font-size="68" font-weight="700" fill="#ffffff">ATTENDANCE</text>
+  <text x="600" y="340" text-anchor="middle" font-family="Inter, sans-serif" font-size="28" fill="#8ec9ff" opacity="0.85">AI-powered attendance system with face recognition and live analytics</text>
+  <g transform="translate(260 430)">
+    <rect x="0" y="0" width="220" height="160" rx="18" fill="#0f3c59" opacity="0.95" />
+    <circle cx="60" cy="60" r="32" fill="#08f0fe" />
+    <rect x="120" y="32" width="70" height="16" rx="8" fill="#ffffff" opacity="0.9" />
+    <rect x="120" y="72" width="90" height="16" rx="8" fill="#ffffff" opacity="0.55" />
+    <text x="110" y="140" fill="#ffffff" font-family="Inter, sans-serif" font-size="20" font-weight="600">Face ID</text>
+  </g>
+  <g transform="translate(470 430)">
+    <rect x="0" y="0" width="220" height="160" rx="18" fill="#0f3c59" opacity="0.95" />
+    <rect x="28" y="32" width="164" height="16" rx="8" fill="#08f0fe" />
+    <rect x="28" y="62" width="164" height="16" rx="8" fill="#ffffff" opacity="0.6" />
+    <rect x="28" y="92" width="164" height="16" rx="8" fill="#ffffff" opacity="0.6" />
+    <text x="110" y="140" fill="#ffffff" font-family="Inter, sans-serif" font-size="20" font-weight="600">Live Reports</text>
+  </g>
+  <g transform="translate(680 430)">
+    <rect x="0" y="0" width="220" height="160" rx="18" fill="#0f3c59" opacity="0.95" />
+    <circle cx="60" cy="52" r="28" fill="#08f0fe" />
+    <circle cx="60" cy="52" r="14" fill="#0b1f2f" />
+    <rect x="120" y="32" width="70" height="20" rx="10" fill="#ffffff" opacity="0.9" />
+    <text x="110" y="140" fill="#ffffff" font-family="Inter, sans-serif" font-size="20" font-weight="600">Secure</text>
+  </g>
+  <g transform="translate(250 250)">
+    <path d="M220 160 L320 160 L320 260 L220 260 Z" fill="#0f3c59" stroke="#0bc7ff" stroke-width="4" rx="20" />
+    <path d="M240 190 C250 170 280 168 290 190" stroke="#ffffff" stroke-width="4" fill="none" />
+    <path d="M250 215 L280 215" stroke="#ffffff" stroke-width="4" />
+    <path d="M260 240 L300 240" stroke="#ffffff" stroke-width="4" />
+  </g>
+</svg>

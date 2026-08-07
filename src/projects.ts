@@ -1,5 +1,10 @@
-import project1Img from './assets/project1.png';
-import project2Img from './assets/project2.png';
+import attendanceImg from './assets/attendance.svg';
+import votingImg from './assets/voting.svg';
+import registrationFormImg from './assets/registration-form.svg';
+import portfolioDisplayImg from './assets/portfolio-display.svg';
+import ecommerceDisplayImg from './assets/ecommerce-display.svg';
+import flappyBirdDisplayImg from './assets/flappy-bird-display.svg';
+import bankingDisplayImg from './assets/banking-display.svg';
 
 export interface Project {
   title: string;
@@ -14,23 +19,73 @@ export interface Project {
 
 export const projects: Project[] = [
   {
-    title: 'DevAnalytics Dashboard',
-    description: 'A real-time data analytical suite displaying server loads, user distributions, and request patterns in real time.',
+    title: 'Smart Attendance System',
+    description: 'AI-powered attendance system using real-time face recognition. Built with FastAPI, React, OpenCV, and DeepFace, featuring live multi-camera tracking, anti-spoofing, role-based access, and auto-generated reports.',
     category: 'fullstack',
     tag: 'Full-Stack',
-    image: project1Img,
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com',
-    technologies: ['React', 'Node.js', 'TypeScript', 'PostgreSQL']
+    image: attendanceImg,
+    githubUrl: 'https://github.com/zubairasif07/Smart-AI-Attendance-System-',
+    liveUrl: '',
+    technologies: ['Python', 'FastAPI', 'React', 'OpenCV', 'DeepFace']
   },
   {
-    title: 'Aura Tech Store',
-    description: 'A gorgeous custom e-commerce product storefront UI with premium animated transitions and state management.',
+    title: 'ShopSphere',
+    description: 'Full-stack e-commerce website built with React frontend and Laravel PHP backend, using MySQL for product and order management.',
+    category: 'fullstack',
+    tag: 'Full-Stack',
+    image: ecommerceDisplayImg,
+    githubUrl: 'https://github.com/zubairasif07/ecommerce-fullstack-design',
+    liveUrl: '',
+    technologies: ['React', 'Laravel', 'PHP', 'MySQL']
+  },
+  {
+    title: 'Smart Banking System',
+    description: 'Full-stack smart banking system with React frontend and Laravel PHP backend, using MySQL for secure account management, transaction history, authentication, and admin dashboards.',
+    category: 'fullstack',
+    tag: 'Full-Stack',
+    image: bankingDisplayImg,
+    githubUrl: 'https://github.com/zubairasif07/smart-banking-system',
+    liveUrl: '',
+    technologies: ['React', 'Laravel', 'PHP', 'MySQL']
+  },
+  {
+    title: 'Online Voting System',
+    description: 'Full-stack online voting system built with React frontend and Laravel PHP backend, using MySQL for voter authentication, ballot management, and secure vote processing.',
+    category: 'fullstack',
+    tag: 'Full-Stack',
+    image: votingImg,
+    githubUrl: 'https://github.com/zubairasif07/online_voting_system',
+    liveUrl: '',
+    technologies: ['React', 'Laravel', 'PHP', 'MySQL']
+  },
+  {
+    title: 'Flappy Bird Game',
+    description: 'Classic Flappy Bird clone built using HTML, CSS, and JavaScript for browser gameplay.',
+    category: 'frontend',
+    tag: 'Game',
+    image: flappyBirdDisplayImg,
+    githubUrl: 'https://github.com/zubairasif07/flappybird',
+    liveUrl: '',
+    technologies: ['HTML', 'CSS', 'JavaScript']
+  },
+  {
+    title: 'Registration Form UI',
+    description: 'Clean registration form UI created using HTML and CSS, designed for responsive user data capture.',
     category: 'frontend',
     tag: 'Frontend',
-    image: project2Img,
-    githubUrl: 'https://github.com',
-    liveUrl: 'https://example.com',
-    technologies: ['HTML5', 'CSS Grid', 'TypeScript', 'Vite']
+    image: registrationFormImg,
+    githubUrl: 'https://github.com/zubairasif07/REGISTRATION-FORM',
+    liveUrl: '',
+    technologies: ['HTML', 'CSS']
+  },
+  {
+    title: 'Portfolio Website',
+    description: 'Personal portfolio website built with React to showcase projects, skills, and contact information.',
+    category: 'frontend',
+    tag: 'Frontend',
+    image: portfolioDisplayImg,
+    githubUrl: 'https://github.com/zubairasif07/portfolio',
+    liveUrl: '',
+    technologies: ['React']
   }
 ];

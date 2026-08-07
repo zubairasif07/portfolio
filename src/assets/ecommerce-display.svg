@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="E-commerce display illustration">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08101c" />
+      <stop offset="100%" stop-color="#112c48" />
+    </linearGradient>
+    <linearGradient id="screen" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a3d68" />
+      <stop offset="100%" stop-color="#0b6cb2" />
+    </linearGradient>
+    <linearGradient id="highlight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2ff4a1" />
+      <stop offset="100%" stop-color="#08c7ff" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#bg)" />
+  <g opacity="0.14">
+    <circle cx="250" cy="190" r="130" fill="#2ff4a1" />
+    <circle cx="920" cy="220" r="100" fill="#08c7ff" />
+    <circle cx="700" cy="640" r="140" fill="#0b6cff" />
+  </g>
+  <rect x="200" y="160" width="800" height="500" rx="80" fill="#0c3156" stroke="#08d2ff" stroke-width="4" />
+  <rect x="260" y="220" width="680" height="420" rx="50" fill="url(#screen)" />
+  <rect x="320" y="280" width="240" height="56" rx="28" fill="#ffffff" opacity="0.16" />
+  <text x="440" y="320" font-family="Inter, sans-serif" font-size="32" fill="#ffffff" opacity="0.9">NovaTrend</text>
+  <rect x="320" y="360" width="520" height="280" rx="40" fill="#0d4f85" opacity="0.96" />
+  <rect x="360" y="400" width="180" height="200" rx="32" fill="#0fd4a6" />
+  <rect x="560" y="400" width="180" height="140" rx="32" fill="#ffffff" opacity="0.12" />
+  <rect x="560" y="560" width="180" height="40" rx="20" fill="#ffffff" opacity="0.18" />
+  <rect x="760" y="400" width="180" height="120" rx="32" fill="#ffffff" opacity="0.12" />
+  <rect x="760" y="540" width="180" height="40" rx="20" fill="#ffffff" opacity="0.18" />
+  <rect x="480" y="500" width="300" height="38" rx="19" fill="#08d2ff" opacity="0.82" />
+  <text x="620" y="530" text-anchor="middle" font-family="Inter, sans-serif" font-size="24" fill="#050c14">Shop Now</text>
+  <circle cx="550" cy="620" r="50" fill="#08d2ff" />
+  <text x="550" y="630" text-anchor="middle" font-family="Inter, sans-serif" font-size="26" font-weight="700" fill="#050c14">New</text>
+</svg>

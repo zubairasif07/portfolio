@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Flappy Bird game illustration">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#90e0ef" />
+      <stop offset="100%" stop-color="#bde0fe" />
+    </linearGradient>
+    <linearGradient id="pipe" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2ca58d" />
+      <stop offset="100%" stop-color="#1b8b67" />
+    </linearGradient>
+    <linearGradient id="bird" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#ffd43b" />
+      <stop offset="100%" stop-color="#ff9f1c" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#sky)" />
+  <circle cx="180" cy="160" r="120" fill="#ffffff" opacity="0.9" />
+  <path d="M0 720 H1200 V800 H0 Z" fill="#299b4e" />
+  <path d="M0 700 C150 650 300 700 450 650 C600 600 750 650 900 600 C1050 550 1200 600 1200 600 V720 H0 Z" fill="#2f9053" />
+  <rect x="840" y="390" width="120" height="260" rx="28" fill="url(#pipe)" />
+  <rect x="840" y="390" width="120" height="120" rx="28" fill="#1a6c4a" />
+  <rect x="380" y="520" width="120" height="280" rx="28" fill="url(#pipe)" />
+  <rect x="380" y="520" width="120" height="120" rx="28" fill="#1a6c4a" />
+  <g filter="url(#shadow)">
+    <ellipse cx="610" cy="330" rx="72" ry="52" fill="#ffde59" />
+    <ellipse cx="610" cy="330" rx="48" ry="34" fill="#ffd638" />
+    <circle cx="560" cy="304" r="24" fill="#ffffff" />
+    <circle cx="568" cy="310" r="12" fill="#1b1b1b" />
+    <path d="M640 330 C660 320 680 330 690 350 C700 370 680 370 660 360" fill="#ff9f1c" />
+    <path d="M560 375 Q590 390 620 375" stroke="#d84f1f" stroke-width="12" fill="none" stroke-linecap="round" />
+  </g>
+  <text x="600" y="140" text-anchor="middle" font-family="Inter, sans-serif" font-size="64" font-weight="800" fill="#ffffff">Flappy Bird</text>
+</svg>

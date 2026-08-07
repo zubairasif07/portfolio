@@ -1,6 +1,7 @@
 import './style.css';
 import emailjs from '@emailjs/browser';
 import avatarImg from './assets/profile-picture.jpeg';
+import cvPdf from './assets/MUHAMMAD ZUBAIR ASIF -WEB DEVELOPER.pdf';
 import { projects } from './projects';
 
 // ==========================================================================
@@ -509,48 +510,12 @@ function initCVDownload() {
   if (!cvBtn) return;
 
   cvBtn.addEventListener('click', () => {
-    // Generate a rich Markdown text-based Resume of Muhammad Zubair Asif
-    const resumeContent = `# MUHAMMAD ZUBAIR ASIF - Full Stack Developer
-Email: zubair.asif@example.com | Location: Pakistan (Remote Available)
-Web: https://portfolio.com
-
-## PROFESSIONAL SUMMARY
-Seasoned and passionate Full-Stack Software Engineer with extensive experience in building highly performant, responsive web architectures, designing secure APIs, and maintaining robust cloud databases.
-
-## TECHNICAL SKILLS
-- Languages: JavaScript, TypeScript, SQL, HTML5, CSS3, Markdown
-- Frontend Frameworks: React, Next.js, Redux Toolkit
-- Backend & Databases: Node.js, Express, PostgreSQL, MongoDB, GraphQL, REST APIs
-- DevOps & Tools: Git, Docker, CI/CD, AWS, Vite, Webpack, Linux
-
-## PROFESSIONAL EXPERIENCES
-### Senior Full-Stack Developer | DevCorp Solutions
-*2024 - Present*
-- Spearheaded development of DevAnalytics, a web dashboard tracking real-time server stats, improving user render performance by 35%.
-- Structured scalable backend APIs using Express and PostgreSQL.
-
-### Frontend Developer | Aura Tech Store
-*2021 - 2024*
-- Developed custom web storefront templates using React and TypeScript.
-- Implemented state-of-the-art interactive micro-animations resulting in 15% user retention growth.
-
-## EDUCATION
-- Bachelor of Science in Computer Science
-
-*This document was generated dynamically from portfolio.*
-`;
-    
-    const blob = new Blob([resumeContent], { type: 'text/markdown' });
-    const url = URL.createObjectURL(blob);
-    
     const anchor = document.createElement('a');
-    anchor.href = url;
-    anchor.download = 'MUHAMMAD_ZUBAIR_ASIF_CV.md';
+    anchor.href = cvPdf;
+    anchor.download = 'MUHAMMAD ZUBAIR ASIF -WEB DEVELOPER.pdf';
     document.body.appendChild(anchor);
     anchor.click();
-    
-    // Clean up
+
     document.body.removeChild(anchor);
-    URL.revokeObjectURL(url);
   });
 }

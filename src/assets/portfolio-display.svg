@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" role="img" aria-label="Portfolio display illustration">
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#050c14" />
+      <stop offset="100%" stop-color="#082238" />
+    </linearGradient>
+    <linearGradient id="phone" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#111c2d" />
+      <stop offset="100%" stop-color="#1a3453" />
+    </linearGradient>
+    <linearGradient id="highlight" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2ff47b" />
+      <stop offset="100%" stop-color="#08c7ff" />
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="800" fill="url(#background)" />
+  <g opacity="0.2">
+    <circle cx="280" cy="180" r="120" fill="#2ff47b" />
+    <circle cx="920" cy="220" r="100" fill="#08c7ff" />
+    <circle cx="720" cy="620" r="140" fill="#0a76ff" />
+  </g>
+  <rect x="240" y="140" width="720" height="520" rx="90" fill="url(#phone)" stroke="#08c7ff" stroke-width="5" />
+  <rect x="300" y="200" width="600" height="400" rx="60" fill="#06132a" />
+  <rect x="330" y="240" width="540" height="70" rx="35" fill="#0df3c9" />
+  <text x="600" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="45" font-weight="800" fill="#050c14">My</text>
+  <text x="720" y="295" text-anchor="middle" font-family="Inter, sans-serif" font-size="45" font-weight="800" fill="#2ff47b">Portfolio</text>
+  <g transform="translate(340 330)">
+    <rect x="0" y="0" width="500" height="80" rx="40" fill="#0f2b47" opacity="0.85" />
+    <circle cx="40" cy="40" r="30" fill="#2ff47b" />
+    <text x="90" y="52" font-family="Inter, sans-serif" font-size="24" fill="#ffffff">theisaacbami</text>
+  </g>
+  <path d="M620 440 Q670 390 720 440 T820 440" stroke="#2ff47b" stroke-width="10" fill="none" opacity="0.8" />
+  <rect x="400" y="520" width="360" height="100" rx="50" fill="#08c7ff" />
+  <text x="580" y="585" text-anchor="middle" font-family="Inter, sans-serif" font-size="30" font-weight="700" fill="#050c14">Slide</text>
+  <circle cx="655" cy="585" r="18" fill="#050c14" />
+  <path d="M649 579 L665 585 L649 591" fill="#2ff47b" />
+</svg>
