@@ -23,7 +23,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initMobileMenu();
   initTypingEffect();
   initStatsCounter();
-  initSkillsAnimation();
   initPortfolioFilters();
   initContactForm();
   initScrollToTop();
@@ -96,31 +95,25 @@ function initTheme() {
   const iconMoon = themeSwitcher.querySelector<SVGElement>('.icon-moon');
   const iconSun = themeSwitcher.querySelector<SVGElement>('.icon-sun');
 
+  const updateThemeControl = (isLight: boolean) => {
+    themeSwitcher.setAttribute('aria-label', `Switch to ${isLight ? 'dark' : 'light'} theme`);
+    themeSwitcher.setAttribute('aria-pressed', String(isLight));
+    iconMoon?.classList.toggle('hidden', isLight);
+    iconSun?.classList.toggle('hidden', !isLight);
+  };
+
   // Check saved setting or system preference
   const savedTheme = localStorage.getItem('theme');
   const systemPrefersLight = window.matchMedia('(prefers-color-scheme: light)').matches;
 
-  if (savedTheme === 'light' || (!savedTheme && systemPrefersLight)) {
-    document.body.classList.add('light-theme');
-    iconMoon?.classList.add('hidden');
-    iconSun?.classList.remove('hidden');
-  } else {
-    document.body.classList.remove('light-theme');
-    iconMoon?.classList.remove('hidden');
-    iconSun?.classList.add('hidden');
-  }
+  const isLight = savedTheme === 'light' || (!savedTheme && systemPrefersLight);
+  document.body.classList.toggle('light-theme', isLight);
+  updateThemeControl(isLight);
 
   themeSwitcher.addEventListener('click', () => {
-    const isLight = document.body.classList.toggle('light-theme');
-    localStorage.setItem('theme', isLight ? 'light' : 'dark');
-
-    if (isLight) {
-      iconMoon?.classList.add('hidden');
-      iconSun?.classList.remove('hidden');
-    } else {
-      iconMoon?.classList.remove('hidden');
-      iconSun?.classList.add('hidden');
-    }
+    const nextIsLight = document.body.classList.toggle('light-theme');
+    localStorage.setItem('theme', nextIsLight ? 'light' : 'dark');
+    updateThemeControl(nextIsLight);
   });
 }
 
@@ -132,12 +125,21 @@ function initMobileMenu() {
   const navMenu = document.querySelector<HTMLElement>('#navigation-menu');
   if (!mobileToggle || !navMenu) return;
 
+  const mobileViewport = window.matchMedia('(max-width: 768px)');
   const hamburgerIcon = mobileToggle.querySelector<SVGElement>('.hamburger-icon');
   const closeIcon = mobileToggle.querySelector<SVGElement>('.close-icon');
 
   const toggleMenu = (open?: boolean) => {
     const shouldOpen = open !== undefined ? open : !navMenu.classList.contains('open');
     mobileToggle.setAttribute('aria-expanded', String(shouldOpen));
+    mobileToggle.setAttribute('aria-label', shouldOpen ? 'Close navigation menu' : 'Open navigation menu');
+    if (mobileViewport.matches) {
+      navMenu.inert = !shouldOpen;
+      navMenu.setAttribute('aria-hidden', String(!shouldOpen));
+    } else {
+      navMenu.inert = false;
+      navMenu.removeAttribute('aria-hidden');
+    }
     
     if (shouldOpen) {
       navMenu.classList.add('open');
@@ -151,6 +153,8 @@ function initMobileMenu() {
       document.body.style.overflow = '';
     }
   };
+
+  toggleMenu(false);
 
   mobileToggle.addEventListener('click', (e) => {
     e.stopPropagation();
@@ -166,7 +170,18 @@ function initMobileMenu() {
   });
 
   document.addEventListener('keydown', event => {
-    if (event.key === 'Escape') toggleMenu(false);
+    if (event.key === 'Escape' && navMenu.classList.contains('open')) {
+      toggleMenu(false);
+      mobileToggle.focus();
+    }
+  });
+
+  mobileViewport.addEventListener('change', event => {
+    toggleMenu(false);
+    if (!event.matches) {
+      navMenu.inert = false;
+      navMenu.removeAttribute('aria-hidden');
+    }
   });
 
   // Close menu when clicking outside
@@ -184,6 +199,12 @@ function initMobileMenu() {
 function initTypingEffect() {
   const target = document.querySelector<HTMLSpanElement>('#typing-target');
   if (!target) return;
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    target.textContent = 'Software Engineer';
+    document.querySelector<HTMLElement>('#typing-cursor')?.setAttribute('hidden', '');
+    return;
+  }
 
   const roles = [
     'Full-Stack Developer',
@@ -266,37 +287,6 @@ function initStatsCounter() {
 }
 
 // ==========================================================================
-// Skills Progress Fill Animation
-// ==========================================================================
-function initSkillsAnimation() {
-  const skillsSection = document.querySelector<HTMLElement>('#skills');
-  if (!skillsSection) return;
-
-  const progressBars = skillsSection.querySelectorAll<HTMLDivElement>('.progress-fill');
-  
-  // Set initial widths to 0
-  progressBars.forEach(bar => {
-    const targetWidth = bar.style.width;
-    bar.setAttribute('data-width', targetWidth);
-    bar.style.width = '0%';
-  });
-
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        progressBars.forEach(bar => {
-          const targetWidth = bar.getAttribute('data-width') || '0%';
-          bar.style.width = targetWidth;
-        });
-        observer.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.2 });
-
-  observer.observe(skillsSection);
-}
-
-// ==========================================================================
 // Render Portfolio Projects Dynamically
 // ==========================================================================
 function renderProjects() {
@@ -311,19 +301,19 @@ function renderProjects() {
         .join('');
 
       return `
-        <div class="portfolio-item glass-card" data-category="${project.category}">
+        <article class="portfolio-item glass-card" data-category="${project.category}">
           <div class="portfolio-image-wrapper">
-            <img src="${project.image}" alt="${project.title}" />
+            <img src="${project.image}" alt="${project.title} project preview" loading="lazy" decoding="async" />
             <div class="portfolio-overlay">
               <div class="overlay-buttons">
                 ${project.githubUrl ? `
-                <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View Source Code">
+                <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View ${project.title} source code">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
                 </a>` : ''}
                 ${project.liveUrl ? `
-                <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Open Live Demo">
+                <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Open ${project.title} live demo">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -345,7 +335,7 @@ function renderProjects() {
               ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">&rarr;</span></a>` : ''}
             </div>
           </div>
-        </div>
+        </article>
       `;
     })
     .join('');
@@ -366,8 +356,12 @@ function initPortfolioFilters() {
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       // Toggle active states
-      filterBtns.forEach(b => b.classList.remove('active'));
+      filterBtns.forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
 
       const filterVal = btn.getAttribute('data-filter') || 'all';
 
@@ -414,6 +408,7 @@ function initContactForm() {
 
   const setValidationState = (el: HTMLElement | null, isValid: boolean) => {
     if (!el) return;
+    el.setAttribute('aria-invalid', String(!isValid));
     const group = el.closest('.form-group');
     if (group) {
       if (isValid) {
@@ -460,7 +455,10 @@ function initContactForm() {
       isFormValid = false;
     }
 
-    if (!isFormValid) return;
+    if (!isFormValid) {
+      form.querySelector<HTMLElement>('.form-group.invalid input, .form-group.invalid textarea')?.focus();
+      return;
+    }
 
     // Disable button and show sending state
     if (submitBtn) {
@@ -492,6 +490,7 @@ function initContactForm() {
         // Reset form and validation styles
         form.reset();
         form.querySelectorAll('.form-group').forEach(group => group.classList.remove('invalid'));
+        form.querySelectorAll('[aria-invalid="true"]').forEach(field => field.setAttribute('aria-invalid', 'false'));
 
         // Hide toast after 4 seconds
         setTimeout(() => toast.classList.remove('show'), 4000);

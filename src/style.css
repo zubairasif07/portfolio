@@ -2443,6 +2443,139 @@ body.light-theme .footer {
   .contact-checklist-grid {
     grid-template-columns: minmax(0, 1fr);
   }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skills-lead {
+  max-width: 58ch;
+  margin: -1.5rem auto 2.5rem;
+  text-align: center;
+}
+
+.about-journey {
+  margin-top: clamp(3.5rem, 7vw, 5.5rem);
+  padding-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--border-color);
+}
+
+.about-journey-heading {
+  max-width: 58ch;
+  margin-bottom: 1.75rem;
+}
+
+.about-journey-heading .eyebrow {
+  margin-bottom: 0.65rem;
+}
+
+.about-journey-heading h3 {
+  margin-bottom: 0.65rem;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  letter-spacing: -0.035em;
+}
+
+.about-journey-heading p,
+.about-journey-card p {
+  color: var(--text-secondary);
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
+.about-journey-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.about-journey-card {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: clamp(1.2rem, 2.5vw, 1.65rem);
+}
+
+.about-journey-card h4 {
+  margin-bottom: 0.35rem;
+  font-size: 1.08rem;
+}
+
+.about-card-label {
+  margin-bottom: 0.85rem;
+  color: var(--accent-cyan);
+  font-family: var(--font-code);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.about-card-meta {
+  margin-top: 0.9rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+.skills-list {
+  align-content: flex-start;
+}
+
+.skill-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 38px;
+  padding: 0.4rem 0.7rem;
+  border: 1px solid var(--border-color);
+  border-radius: 9px;
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+  font-size: 0.83rem;
+  font-weight: 600;
+}
+
+.filter-btn {
+  min-height: 44px;
+}
+
+.filter-btn:focus-visible,
+.project-actions a:focus-visible,
+.social-icon:focus-visible {
+  outline-offset: 4px;
+}
+
+.form-group input[aria-invalid="true"],
+.form-group textarea[aria-invalid="true"] {
+  border-color: #ef4444;
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+  color: var(--text-secondary);
+  opacity: 0.78;
+}
+
+@media (max-width: 520px) {
+  .skills-lead {
+    margin-top: -0.75rem;
+    margin-bottom: 1.75rem;
+  }
+
+  .about-journey-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
 
   .focus-card,
   .process-step {

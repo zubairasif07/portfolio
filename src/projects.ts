@@ -80,12 +80,12 @@ export const projects: Project[] = [
   },
   {
     title: 'Portfolio Website',
-    description: 'Personal portfolio website built with React to showcase projects, skills, and contact information.',
+    description: 'Responsive personal portfolio built with TypeScript and Vite, featuring routed sections, project filtering, accessible theme controls, and a contact form.',
     category: 'frontend',
     tag: 'Frontend',
     image: portfolioDisplayImg,
     githubUrl: 'https://github.com/zubairasif07/portfolio',
     liveUrl: '',
-    technologies: ['React']
+    technologies: ['TypeScript', 'Vite', 'CSS']
   }
 ];
