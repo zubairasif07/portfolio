@@ -8,6 +8,8 @@ import { projects } from './projects';
 // Initialization & Asset Setup
 // ==========================================================================
 document.addEventListener('DOMContentLoaded', () => {
+  if (!initRoutes()) return;
+
   // Bind asset imports dynamically for robust Vite compilation
   const heroAvatar = document.querySelector<HTMLImageElement>('#hero-avatar');
   if (heroAvatar) {
@@ -22,12 +24,67 @@ document.addEventListener('DOMContentLoaded', () => {
   initTypingEffect();
   initStatsCounter();
   initSkillsAnimation();
-  initScrollSpy();
   initPortfolioFilters();
   initContactForm();
   initScrollToTop();
   initCVDownload();
 });
+
+function initRoutes() {
+  const pageSections: Record<string, string[]> = {
+    '/': ['home', 'home-work', 'home-focus'],
+    '/about': ['about-intro', 'about', 'skills', 'services', 'about-process'],
+    '/projects': ['projects-intro', 'portfolio', 'projects-notes'],
+    '/contact': ['contact-intro', 'contact', 'contact-next-steps']
+  };
+  const description = document.querySelector<HTMLMetaElement>('meta[name="description"]');
+  const descriptions: Record<string, string> = {
+    '/': 'Explore selected full-stack and frontend projects by Muhammad Zubair Asif, a software engineer focused on thoughtful, responsive web experiences.',
+    '/about': 'Learn about Muhammad Zubair Asif’s approach to frontend, backend, responsive UI, and practical web application development.',
+    '/projects': 'Browse selected frontend and full-stack projects, technologies, and source repositories by Muhammad Zubair Asif.',
+    '/contact': 'Discuss a web project with Muhammad Zubair Asif. Share your goals, scope, and context using the contact form or email.'
+  };
+  const titles: Record<string, string> = {
+    '/': 'Muhammad Zubair Asif | Software Engineer',
+    '/about': 'About | Muhammad Zubair Asif',
+    '/projects': 'Projects | Muhammad Zubair Asif',
+    '/contact': 'Contact | Muhammad Zubair Asif'
+  };
+  const currentPath = window.location.pathname.replace(/\/+$/, '') || '/';
+  const visibleSections = pageSections[currentPath];
+
+  if (!visibleSections) {
+    window.location.replace('/');
+    return false;
+  }
+
+  document.title = titles[currentPath];
+  if (description) description.content = descriptions[currentPath];
+  document.body.dataset.page = currentPath === '/' ? 'home' : currentPath.slice(1);
+
+  document.querySelectorAll<HTMLElement>('main > section').forEach(section => {
+    section.hidden = !visibleSections.includes(section.id);
+    section.setAttribute('aria-hidden', String(section.hidden));
+  });
+  const hero = document.querySelector<HTMLElement>('#home');
+  const homeSections = document.querySelectorAll<HTMLElement>('.home-overview');
+  if (hero && currentPath === '/') {
+    homeSections[0]?.before(hero);
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>('.nav-link').forEach(link => {
+    const linkPath = link.pathname.replace(/\/+$/, '') || '/';
+    const isCurrentPage = linkPath === currentPath;
+    link.classList.toggle('active', isCurrentPage);
+    if (isCurrentPage) {
+      link.setAttribute('aria-current', 'page');
+    } else {
+      link.removeAttribute('aria-current');
+    }
+  });
+
+  return true;
+}
 
 // ==========================================================================
 // Dark / Light Theme Logic
@@ -80,6 +137,7 @@ function initMobileMenu() {
 
   const toggleMenu = (open?: boolean) => {
     const shouldOpen = open !== undefined ? open : !navMenu.classList.contains('open');
+    mobileToggle.setAttribute('aria-expanded', String(shouldOpen));
     
     if (shouldOpen) {
       navMenu.classList.add('open');
@@ -105,6 +163,10 @@ function initMobileMenu() {
     link.addEventListener('click', () => {
       toggleMenu(false);
     });
+  });
+
+  document.addEventListener('keydown', event => {
+    if (event.key === 'Escape') toggleMenu(false);
   });
 
   // Close menu when clicking outside
@@ -235,47 +297,14 @@ function initSkillsAnimation() {
 }
 
 // ==========================================================================
-// Scroll Spy & Active Nav Highlight
-// ==========================================================================
-function initScrollSpy() {
-  const sections = document.querySelectorAll<HTMLElement>('section');
-  const navLinks = document.querySelectorAll<HTMLAnchorElement>('.nav-link');
-
-  const handleScroll = () => {
-    let currentActiveId = '';
-    const scrollPos = window.scrollY + 150; // offset for sticky header
-
-    sections.forEach(section => {
-      const top = section.offsetTop;
-      const height = section.offsetHeight;
-
-      if (scrollPos >= top && scrollPos < top + height) {
-        currentActiveId = section.getAttribute('id') || '';
-      }
-    });
-
-    if (currentActiveId) {
-      navLinks.forEach(link => {
-        link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentActiveId}`) {
-          link.classList.add('active');
-        }
-      });
-    }
-  };
-
-  window.addEventListener('scroll', handleScroll);
-  handleScroll(); // Trigger initial execution
-}
-
-// ==========================================================================
 // Render Portfolio Projects Dynamically
 // ==========================================================================
 function renderProjects() {
-  const grid = document.querySelector<HTMLDivElement>('#project-grid');
-  if (!grid) return;
+  const grids = document.querySelectorAll<HTMLDivElement>('#project-grid, #featured-grid');
 
-  grid.innerHTML = projects
+  grids.forEach(grid => {
+    const visibleProjects = grid.id === 'featured-grid' ? projects.slice(0, 3) : projects;
+    grid.innerHTML = visibleProjects
     .map(project => {
       const techBadges = project.technologies
         .map(tech => `<span>${tech}</span>`)
@@ -288,13 +317,13 @@ function renderProjects() {
             <div class="portfolio-overlay">
               <div class="overlay-buttons">
                 ${project.githubUrl ? `
-                <a href="${project.githubUrl}" target="_blank" class="project-link-btn" aria-label="View Source Code">
+                <a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="View Source Code">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path>
                   </svg>
                 </a>` : ''}
                 ${project.liveUrl ? `
-                <a href="${project.liveUrl}" target="_blank" class="project-link-btn" aria-label="Open Live Demo">
+                <a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer" class="project-link-btn" aria-label="Open Live Demo">
                   <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
                     <polyline points="15 3 21 3 21 9"></polyline>
@@ -311,11 +340,16 @@ function renderProjects() {
             <div class="project-tech-badges">
               ${techBadges}
             </div>
+            <div class="project-actions">
+              ${project.githubUrl ? `<a href="${project.githubUrl}" target="_blank" rel="noopener noreferrer">View source <span aria-hidden="true">&rarr;</span></a>` : ''}
+              ${project.liveUrl ? `<a href="${project.liveUrl}" target="_blank" rel="noopener noreferrer">Live demo <span aria-hidden="true">&rarr;</span></a>` : ''}
+            </div>
           </div>
         </div>
       `;
     })
     .join('');
+  });
 }
 
 // ==========================================================================
@@ -492,6 +526,11 @@ function initContactForm() {
 function initScrollToTop() {
   const scrollTopBtn = document.querySelector<HTMLAnchorElement>('#scroll-top-btn');
   if (!scrollTopBtn) return;
+
+  scrollTopBtn.addEventListener('click', event => {
+    event.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
 
   window.addEventListener('scroll', () => {
     if (window.scrollY > 500) {

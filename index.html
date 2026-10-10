@@ -3,11 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     
     <!-- Primary SEO Meta Tags -->
     <title>Muhammad Zubair Asif | Professional Full-Stack Developer Portfolio</title>
-    <meta name="description" content="Portfolio of Muhammad Zubair Asif, a professional Full-Stack Developer specializing in building high-performance web applications with stunning user interfaces, clean code, and robust architectures." />
+    <meta name="description" content="Explore selected full-stack and frontend projects by Muhammad Zubair Asif, a software engineer focused on thoughtful, responsive web experiences." />
     <meta name="keywords" content="Muhammad Zubair Asif, Full Stack Developer, Software Engineer, Portfolio, Frontend Developer, Backend Developer, TypeScript, React, Node.js" />
     <meta name="author" content="Muhammad Zubair Asif" />
     
@@ -35,12 +35,12 @@
       <!-- Premium Glassmorphic Header -->
       <header class="glass-header" id="main-header">
         <div class="header-container">
-          <a href="#home" class="logo" id="header-logo">
+          <a href="/" class="logo" id="header-logo">
             Port<span class="highlight">folio</span>
           </a>
           
           <!-- Mobile Menu Toggle Button -->
-          <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Toggle Navigation Menu">
+          <button class="mobile-nav-toggle" id="mobile-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="navigation-menu">
             <svg class="hamburger-icon" viewBox="0 0 24 24" width="24" height="24">
               <line x1="4" y1="6" x2="20" y2="6" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
               <line x1="4" y1="12" x2="20" y2="12" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/>
@@ -53,13 +53,11 @@
           </button>
           
           <!-- Navigation Menu -->
-          <nav class="nav-menu" id="navigation-menu">
-            <a href="#home" class="nav-link active" id="nav-home">Home</a>
-            <a href="#about" class="nav-link" id="nav-about">About</a>
-            <a href="#skills" class="nav-link" id="nav-skills">Skills</a>
-            <a href="#services" class="nav-link" id="nav-services">Services</a>
-            <a href="#portfolio" class="nav-link" id="nav-portfolio">Portfolio</a>
-            <a href="#contact" class="nav-link" id="nav-contact">Contact</a>
+          <nav class="nav-menu" id="navigation-menu" aria-label="Main navigation">
+            <a href="/" class="nav-link" id="nav-home">Home</a>
+            <a href="/about" class="nav-link" id="nav-about">About</a>
+            <a href="/projects" class="nav-link" id="nav-projects">Projects</a>
+            <a href="/contact" class="nav-link" id="nav-contact">Contact</a>
           </nav>
           
           <!-- Actions: Theme Toggle and Download CV -->
@@ -99,7 +97,52 @@
       
       <!-- Main Content Container -->
       <main>
-        
+        <section class="home-overview section-home-work" id="home-work">
+          <div class="container">
+            <div class="section-heading-row">
+              <div>
+                <span class="eyebrow">A selection of recent work</span>
+                <h2 class="section-title section-title-left">Projects built to <span class="highlight">solve real problems</span></h2>
+                <p class="section-lead">A look at practical interfaces and full-stack systems—from attendance workflows to commerce and banking dashboards.</p>
+              </div>
+              <a class="text-link" href="/projects">Explore all projects <span aria-hidden="true">&rarr;</span></a>
+            </div>
+            <div class="portfolio-grid featured-grid" id="featured-grid"></div>
+          </div>
+        </section>
+
+        <section class="home-overview section-home-focus" id="home-focus">
+          <div class="container">
+            <span class="eyebrow">How I can contribute</span>
+            <h2 class="section-title section-title-left">Thoughtful engineering, <span class="highlight">from interface to API</span></h2>
+            <div class="focus-grid">
+              <article class="focus-card glass-card">
+                <span class="focus-number">01</span>
+                <h3>Frontend that feels right</h3>
+                <p>Accessible, responsive interfaces with clear hierarchy, careful states, and reusable components.</p>
+              </article>
+              <article class="focus-card glass-card">
+                <span class="focus-number">02</span>
+                <h3>Backends with a clear contract</h3>
+                <p>Well-structured APIs and data flows designed around the needs of the product and its users.</p>
+              </article>
+              <article class="focus-card glass-card">
+                <span class="focus-number">03</span>
+                <h3>Reliable end-to-end delivery</h3>
+                <p>Practical collaboration from clarifying requirements through implementation, review, and handoff.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="route-intro" id="about-intro">
+          <div class="container route-intro-inner">
+            <span class="eyebrow">About &amp; capabilities</span>
+            <h1 class="route-title">A developer who cares about <span class="highlight">the whole product</span></h1>
+            <p class="section-lead">I work across frontend and backend, bringing interface details, API behavior, and maintainable implementation together.</p>
+          </div>
+        </section>
+
         <!-- Section: Home (Hero) -->
         <section class="section-hero" id="home">
           <div class="container hero-grid">
@@ -123,7 +166,7 @@
                   And I'm a <span class="typing-text" id="typing-target"></span><span class="cursor" id="typing-cursor">|</span>
                 </div>
                 <p class="hero-description">
-                  A passionate Software Engineer dedicated to crafting premium web applications. Specializing in high-performance frontend solutions, robust API integrations, and sleek designs that elevate user experiences. Let's build something exceptional.
+                  I build useful web experiences across the frontend and backend—bringing thoughtful UI, dependable APIs, and maintainable code together. Explore selected projects, the tools behind them, and how we can work together.
                 </p>
                 
                 <!-- Social Links -->
@@ -156,8 +199,8 @@
                 
                 <!-- Action Buttons -->
                 <div class="hero-actions">
-                  <a href="#contact" class="btn btn-primary" id="btn-hire">Hire Me</a>
-                  <a href="#contact" class="btn btn-secondary" id="btn-contact-hero">Contact Me</a>
+                  <a href="/contact" class="btn btn-primary" id="btn-hire">Hire Me</a>
+                  <a href="/contact" class="btn btn-secondary" id="btn-contact-hero">Contact Me</a>
                 </div>
               </div>
             </div>
@@ -168,20 +211,20 @@
           <div class="stats-bar-wrapper">
             <div class="container stats-bar" id="stats-counter-bar">
               <div class="stat-item" id="stat-experience">
-                <span class="stat-number" data-target="10">0</span>
-                <span class="stat-label">Years of<br>experience</span>
+                <span class="stat-number" data-target="7">0</span>
+                <span class="stat-label">Projects<br>showcased</span>
               </div>
               <div class="stat-item" id="stat-projects">
-                <span class="stat-number" data-target="30">0</span>
-                <span class="stat-label">Projects<br>completed</span>
+                <span class="stat-number" data-target="4">0</span>
+                <span class="stat-label">Full-stack<br>builds</span>
               </div>
               <div class="stat-item" id="stat-technologies">
-                <span class="stat-number" data-target="15">0</span>
-                <span class="stat-label">Technologies<br>mastered</span>
+                <span class="stat-number" data-target="11">0</span>
+                <span class="stat-label">Technologies<br>used</span>
               </div>
               <div class="stat-item" id="stat-clients">
-                <span class="stat-number" data-target="100">0</span>
-                <span class="stat-label">Satisfied<br>clients</span>
+                <span class="stat-number" data-target="4">0</span>
+                <span class="stat-label">Service<br>areas</span>
               </div>
             </div>
           </div>
@@ -190,7 +233,8 @@
         <!-- Section: About -->
         <section class="section-about" id="about">
           <div class="container">
-            <h2 class="section-title" id="about-title">About <span class="highlight">Me</span></h2>
+            <span class="eyebrow">How I work</span>
+            <h2 class="section-title" id="about-title">A little about <span class="highlight">how I work</span></h2>
             
             <div class="about-grid">
               <!-- Left Column: Code Block visualization profile -->
@@ -205,22 +249,21 @@
                   <pre class="terminal-body"><code>{
   <span class="key">"name"</span>: <span class="val">"Muhammad Zubair Asif"</span>,
   <span class="key">"role"</span>: <span class="val">"Full-Stack Developer"</span>,
-  <span class="key">"skills"</span>: [
-    <span class="val">"TypeScript"</span>, <span class="val">"React"</span>, <span class="val">"Node.js"</span>,
-    <span class="val">"GraphQL"</span>, <span class="val">"PostgreSQL"</span>, <span class="val">"Docker"</span>
+  <span class="key">"project_stack"</span>: [
+    <span class="val">"React"</span>, <span class="val">"Laravel"</span>, <span class="val">"PHP"</span>,
+    <span class="val">"Python"</span>, <span class="val">"FastAPI"</span>, <span class="val">"MySQL"</span>
   ],
-  <span class="key">"passion"</span>: <span class="val">"Creating premium UI & fast servers"</span>,
-  <span class="key">"hobbies"</span>: [<span class="val">"Tech Blogging"</span>, <span class="val">"Open Source"</span>],
-  <span class="key">"motto"</span>: <span class="val">"Clean code, exceptional performance."</span>
+  <span class="key">"focus"</span>: <span class="val">"Useful interfaces and dependable workflows"</span>,
+  <span class="key">"approach"</span>: <span class="val">"Understand, build, refine, hand off"</span>
 }</code></pre>
                 </div>
               </div>
               
               <!-- Right Column: Textual description and information -->
               <div class="about-right">
-                <h3>High-performance applications tailored to your business needs</h3>
+                <h3>From an idea to a thoughtful, working product</h3>
                 <p>
-                  I'm a seasoned Full-Stack Developer with a deep focus on building scalable web solutions. With expertise in contemporary frontend frameworks, robust API developments, and cloud databases, I translate challenging mockups and complex project parameters into seamless, production-ready systems.
+                  I'm a software engineer focused on practical web development. My project work spans responsive React interfaces, Laravel applications, Python APIs, and data-backed workflows. I aim to make each part understandable: what the user needs, how the system responds, and how the code can be maintained.
                 </p>
                 
                 <div class="key-expertises">
@@ -246,7 +289,7 @@
                         <polyline points="20 6 9 17 4 12"></polyline>
                       </svg>
                     </div>
-                    <span>Vast Experience with Cloud Environments</span>
+                    <span>Clear integration between services and data</span>
                   </div>
                 </div>
                 
@@ -273,7 +316,8 @@
         <!-- Section: Skills -->
         <section class="section-skills" id="skills">
           <div class="container">
-            <h2 class="section-title" id="skills-title">My <span class="highlight">Skills</span></h2>
+            <span class="eyebrow">Tools used across project work</span>
+            <h2 class="section-title" id="skills-title">Technologies &amp; <span class="highlight">skills</span></h2>
             
             <div class="skills-grid">
               
@@ -398,7 +442,8 @@
         <!-- Section: Services -->
         <section class="section-services" id="services">
           <div class="container">
-            <h2 class="section-title" id="services-title">My <span class="highlight">Services</span></h2>
+            <span class="eyebrow">Ways I can help</span>
+            <h2 class="section-title" id="services-title">Services &amp; <span class="highlight">collaboration</span></h2>
             
             <div class="services-grid">
               
@@ -451,8 +496,8 @@
                     <line x1="6" y1="20" x2="6" y2="14"></line>
                   </svg>
                 </div>
-                <h3>Speed & SEO Audit</h3>
-                <p>Tuning website parameters to achieve flawless scores on Lighthouse audits, improving SEO indexability and page loading times.</p>
+                <h3>Performance & SEO foundations</h3>
+                <p>Improving loading behavior, semantic structure, and page metadata to give users and search engines a clearer, faster experience.</p>
               </div>
               
             </div>
@@ -460,9 +505,47 @@
         </section>
         
         <!-- Section: Portfolio -->
+        <section class="section-process" id="about-process">
+          <div class="container">
+            <span class="eyebrow">A straightforward process</span>
+            <h2 class="section-title section-title-left">Make the work <span class="highlight">clear at every step</span></h2>
+            <div class="process-grid">
+              <article class="process-step glass-card">
+                <span class="process-index">01</span>
+                <h3>Understand</h3>
+                <p>Align on the audience, the problem to solve, and what a useful first release should include.</p>
+              </article>
+              <article class="process-step glass-card">
+                <span class="process-index">02</span>
+                <h3>Design the approach</h3>
+                <p>Break the work into interface, data, and integration decisions before implementation gets complicated.</p>
+              </article>
+              <article class="process-step glass-card">
+                <span class="process-index">03</span>
+                <h3>Build &amp; refine</h3>
+                <p>Implement in focused increments, check responsive behavior, and refine details with feedback.</p>
+              </article>
+              <article class="process-step glass-card">
+                <span class="process-index">04</span>
+                <h3>Hand off clearly</h3>
+                <p>Share the completed work with a clear summary of what is included and any next steps.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="route-intro" id="projects-intro">
+          <div class="container route-intro-inner">
+            <span class="eyebrow">Selected projects</span>
+            <h1 class="route-title">A practical portfolio of <span class="highlight">things I've built</span></h1>
+            <p class="section-lead">Explore the problem space, implementation focus, and technology choices behind each project. Source links are provided where available; no live demo is listed when one is not available.</p>
+          </div>
+        </section>
+
         <section class="section-portfolio" id="portfolio">
           <div class="container">
-            <h2 class="section-title" id="portfolio-title">My <span class="highlight">Projects</span></h2>
+            <h2 class="section-title" id="portfolio-title">Selected <span class="highlight">work</span></h2>
+            <p class="section-lead portfolio-lead">Filter by project type, explore each technology stack, and open the repository to review the implementation.</p>
             
             <!-- Filters -->
             <div class="portfolio-filters" id="project-filters">
@@ -477,11 +560,38 @@
             </div>
           </div>
         </section>
+
+        <section class="project-notes" id="projects-notes">
+          <div class="container project-notes-grid">
+            <div>
+              <span class="eyebrow">What to look for</span>
+              <h2>Engineering decisions matter as much as the <span class="highlight">screens</span></h2>
+              <p>These projects cover different problem types: face-recognition workflows, commerce and banking features, voting flows, and smaller frontend builds. Each card lists its stack and links to its source repository.</p>
+            </div>
+            <div class="project-principles glass-card">
+              <h3>Project review checklist</h3>
+              <ul>
+                <li>Does the interface stay usable on narrow screens?</li>
+                <li>Are the main user flows and data responsibilities clear?</li>
+                <li>Can the chosen stack support the needs of the project?</li>
+                <li>Is the implementation easy to navigate and extend?</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="route-intro" id="contact-intro">
+          <div class="container route-intro-inner">
+            <span class="eyebrow">Start a conversation</span>
+            <h1 class="route-title">Have a project in mind? <span class="highlight">Let's talk.</span></h1>
+            <p class="section-lead">Share what you are building, where you need support, and what a successful outcome looks like. I will review the details and get back to you.</p>
+          </div>
+        </section>
         
         <!-- Section: Contact -->
         <section class="section-contact" id="contact">
           <div class="container">
-            <h2 class="section-title" id="contact-title">Contact <span class="highlight">Me</span></h2>
+            <h2 class="section-title" id="contact-title">Tell me about <span class="highlight">your project</span></h2>
             
             <div class="contact-grid">
               
@@ -575,6 +685,45 @@
           </div>
         </section>
         
+        <section class="contact-next-steps" id="contact-next-steps">
+          <div class="container">
+            <span class="eyebrow">A useful first message</span>
+            <h2 class="section-title section-title-left">A few details help us <span class="highlight">get started</span></h2>
+            <div class="contact-checklist-grid">
+              <article class="contact-checklist-card">
+                <span>01</span>
+                <h3>The goal</h3>
+                <p>What are you trying to make easier, faster, or possible?</p>
+              </article>
+              <article class="contact-checklist-card">
+                <span>02</span>
+                <h3>The scope</h3>
+                <p>Which features, screens, or integrations matter most right now?</p>
+              </article>
+              <article class="contact-checklist-card">
+                <span>03</span>
+                <h3>The context</h3>
+                <p>Share any existing designs, repositories, constraints, or target dates.</p>
+              </article>
+            </div>
+            <div class="contact-faq">
+              <h3>Frequently asked</h3>
+              <details>
+                <summary>Can we work remotely?</summary>
+                <p>Yes. The contact form and email work for remote project discussions. My listed location is Pakistan.</p>
+              </details>
+              <details>
+                <summary>What should I include in the first message?</summary>
+                <p>A short project summary, the kind of support you need, and any useful links are a great starting point.</p>
+              </details>
+              <details>
+                <summary>Can I contact you directly?</summary>
+                <p>Yes—email <a href="mailto:teamzubairasif@gmail.com">teamzubairasif@gmail.com</a> if you prefer email over the form.</p>
+              </details>
+            </div>
+          </div>
+        </section>
+
       </main>
       
       <!-- Footer Section -->
@@ -586,18 +735,16 @@
           </div>
           
           <div class="footer-links">
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#skills">Skills</a>
-            <a href="#services">Services</a>
-            <a href="#portfolio">Portfolio</a>
-            <a href="#contact">Contact</a>
+            <a href="/">Home</a>
+            <a href="/about">About</a>
+            <a href="/projects">Projects</a>
+            <a href="/contact">Contact</a>
           </div>
         </div>
       </footer>
       
       <!-- Back to Top Button -->
-      <a href="#home" class="back-to-top" id="scroll-top-btn" aria-label="Scroll to top">
+      <a href="#" class="back-to-top" id="scroll-top-btn" aria-label="Back to top">
         <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
           <polyline points="18 15 12 9 6 15"></polyline>
         </svg>
